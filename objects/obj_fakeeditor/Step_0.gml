@@ -2,8 +2,10 @@ if mouse_check_button_pressed(mb_left)
     {
         if editormode
         {
-            if (device_mouse_x_to_gui(0) < (button1x + button1width) && device_mouse_y_to_gui(0) < (button1y + button1height) && device_mouse_x_to_gui(0) >= button1x && device_mouse_y_to_gui(0) >= button1y)
-                dsxioks = get_string_async("Set object variable (<type> <variablename> <new value>).", nejdmssx)
+            if (device_mouse_x_to_gui(0) < (button1x + button1width) && device_mouse_y_to_gui(0) < (button1y + button1height) && device_mouse_x_to_gui(0) >= button1x && device_mouse_y_to_gui(0) >= button1y){
+                dsxioks = get_string_async("Set object variable (<type> <variablename> <new value>), save, load, delete level.", nejdmssx)
+				return
+			}
             else if (device_mouse_x_to_gui(0) < (button2x + button2width) && device_mouse_y_to_gui(0) < (button2y + button2height) && device_mouse_x_to_gui(0) >= button2x && device_mouse_y_to_gui(0) >= button2y)
             {
                 if instance_exists(transfotip)
@@ -13,7 +15,7 @@ if mouse_check_button_pressed(mb_left)
                 {
                     if instance_exists(other.selectedent)
                     {
-                        text = ("Deleted " + object_get_name(other.selectedent.object_index))
+                        text = ("Deleted " + string_upper(object_get_name(other.selectedent.object_index)))
                         instance_destroy(other.selectedent)
                     }
                 }
@@ -30,10 +32,11 @@ if mouse_check_button_pressed(mb_left)
             }
             if (!hoverbutton)
             {
+				oldselectedent = selectedent
 				selectedent = instance_position(mouse_x, mouse_y, all)
 				if(instance_exists(selectedent)){
 					if(selectedent.object_index = obj_virtual_controller){
-						selectedent = undefined
+						selectedent = oldselectedent
 					}
 				}
                 if instance_exists(selectedent)
@@ -60,7 +63,7 @@ if mouse_check_button_pressed(mb_left)
                 with (transfotip)
                 {
                     if instance_exists(other.selectedent)
-                        text = ("Selected " + object_get_name(other.selectedent.object_index))
+                        text = ("Selected " + string_upper(object_get_name(other.selectedent.object_index)))
                 }
             }
         }
