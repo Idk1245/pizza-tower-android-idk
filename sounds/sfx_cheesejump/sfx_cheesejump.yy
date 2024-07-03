@@ -3,7 +3,7 @@
   "resourceVersion": "1.0",
   "name": "sfx_cheesejump",
   "conversionMode": 0,
-  "compression": 0,
+  "compression": 3,
   "volume": 1.0,
   "preload": true,
   "bitRate": 128,
@@ -15,7 +15,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "sfx_cheesejump.wav",
-  "duration": 0.483,
+  "duration": 0.483333,
   "parent": {
     "name": "SFX",
     "path": "folders/Sounds/SFX.yy",

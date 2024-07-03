@@ -3,7 +3,7 @@
   "resourceVersion": "1.0",
   "name": "mu_graveyard",
   "conversionMode": 0,
-  "compression": 0,
+  "compression": 3,
   "volume": 0.5,
   "preload": true,
   "bitRate": 128,
@@ -15,7 +15,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_graveyard.mp3",
-  "duration": 196.224,
+  "duration": 196.22401,
   "parent": {
     "name": "Music",
     "path": "folders/Sounds/Music.yy",

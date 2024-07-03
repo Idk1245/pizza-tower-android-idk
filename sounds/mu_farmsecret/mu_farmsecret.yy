@@ -3,7 +3,7 @@
   "resourceVersion": "1.0",
   "name": "mu_farmsecret",
   "conversionMode": 0,
-  "compression": 0,
+  "compression": 3,
   "volume": 1.0,
   "preload": true,
   "bitRate": 128,
@@ -15,7 +15,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_farmsecret",
-  "duration": 71.489,
+  "duration": 71.489365,
   "parent": {
     "name": "Music",
     "path": "folders/Sounds/Music.yy",

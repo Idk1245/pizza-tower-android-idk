@@ -3,7 +3,7 @@
   "resourceVersion": "1.0",
   "name": "sfx_collecttoppin",
   "conversionMode": 0,
-  "compression": 0,
+  "compression": 3,
   "volume": 1.0,
   "preload": true,
   "bitRate": 128,
@@ -15,7 +15,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "sfx_collecttoppin",
-  "duration": 3.645,
+  "duration": 3.645918,
   "parent": {
     "name": "SFX",
     "path": "folders/Sounds/SFX.yy",

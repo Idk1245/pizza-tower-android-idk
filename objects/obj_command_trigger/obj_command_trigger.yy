@@ -7,11 +7,14 @@
     "path": "sprites/spr_command_trigger/spr_command_trigger.yy",
   },
   "solid": false,
-  "visible": true,
+  "visible": false,
   "managed": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "obj_fakeeditor_trigger_base",
+    "path": "objects/obj_fakeeditor_trigger_base/obj_fakeeditor_trigger_base.yy",
+  },
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,
@@ -32,7 +35,7 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "fakeeditor",
+    "path": "folders/Objects/fakeeditor.yy",
   },
 }

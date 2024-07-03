@@ -28,19 +28,13 @@ if (global.showcollisions){
 			visible = true
 		}
 	}
-	with(obj_music_trigger){
-			visible = true
-	}
-	with(obj_background_trigger){
-			visible = true
-	}
 	with(obj_enemyspawn){
 			visible = true
 	}
-	with(obj_variable_trigger){
+	with(obj_fakeeditor_trigger_base){
 			visible = true
 	}
-	with(obj_tvtrigger){
+	with(obj_fakeeditor_trigger_door_base){
 			visible = true
 	}
 }
@@ -60,19 +54,15 @@ if (!global.showcollisions){
 			visible = false
 		}
 	}
-	with(obj_music_trigger){
-			visible = false
-	}
-	with(obj_background_trigger){
-			visible = false
-	}
 	with(obj_enemyspawn){
 			visible = false
 	}
-	with(obj_variable_trigger){
+	
+	with(obj_fakeeditor_trigger_base){
 			visible = false
 	}
-	with(obj_tvtrigger){
+	
+	with(obj_fakeeditor_trigger_door_base){
 			visible = false
 	}
 }

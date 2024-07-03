@@ -3,7 +3,7 @@
   "resourceVersion": "1.0",
   "name": "mu_medievalentrance",
   "conversionMode": 0,
-  "compression": 0,
+  "compression": 3,
   "volume": 1.0,
   "preload": true,
   "bitRate": 128,
@@ -15,7 +15,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_medievalentrance",
-  "duration": 130.024,
+  "duration": 130.02487,
   "parent": {
     "name": "Music",
     "path": "folders/Sounds/Music.yy",

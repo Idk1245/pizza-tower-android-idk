@@ -3,7 +3,7 @@
   "resourceVersion": "1.0",
   "name": "mu_freezer",
   "conversionMode": 0,
-  "compression": 0,
+  "compression": 3,
   "volume": 1.0,
   "preload": true,
   "bitRate": 128,
@@ -15,7 +15,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_freezer.ogg",
-  "duration": 153.488,
+  "duration": 153.48825,
   "parent": {
     "name": "Music",
     "path": "folders/Sounds/Music.yy",

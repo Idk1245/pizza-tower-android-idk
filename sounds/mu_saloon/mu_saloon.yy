@@ -3,7 +3,7 @@
   "resourceVersion": "1.0",
   "name": "mu_saloon",
   "conversionMode": 0,
-  "compression": 0,
+  "compression": 3,
   "volume": 1.0,
   "preload": true,
   "bitRate": 128,
@@ -15,7 +15,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_saloon",
-  "duration": 135.539,
+  "duration": 135.53923,
   "parent": {
     "name": "Music",
     "path": "folders/Sounds/Music.yy",

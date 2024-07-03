@@ -285,6 +285,8 @@ global.mach_color1 = make_colour_rgb(96, 208, 72)
 global.mach_color2 = make_colour_rgb(248, 0, 0)
 global.afterimage_color1 = make_colour_rgb(255, 0, 0)
 global.afterimage_color2 = make_colour_rgb(0, 255, 0)
+global.afterimage_color3 = make_color_rgb(44, 126, 228)
+global.firemouth_color = make_color_rgb(248, 112, 24)
 global.smallnumber_color1 = make_colour_rgb(255, 255, 255)
 global.smallnumber_color2 = make_colour_rgb(248, 0, 0)
 global.optimize = 0
@@ -369,10 +371,13 @@ global.mrstickcutscene2 = -4
 global.mrstickcutscene3 = -4
 global.chateauswap = -4
 global.warcutscene = -4
-//pal_swap_init_system(shd_pal_swapper)
 with (obj_player1)
 	state = states.normal
 global.loadeditor = 0
 room_goto(hub_loadingscreen)
 instance_destroy(obj_cutscene_handler)
 gamesave_async_load()
+if(!variable_instance_exists(obj_player1,"__checkedstartup")){
+	scr_startupcommand()
+	obj_player1.__checkedstartup = 1
+}

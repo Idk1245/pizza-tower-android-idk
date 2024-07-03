@@ -235,6 +235,8 @@ function scr_characterspr() {
 		spr_boxxedpepdashstart = spr_boxxedpep_dashstart
 		spr_boxxedpepdashend = spr_boxxedpep_dashend
 		spr_boxxedpepdash = spr_boxxedpep_dash
+		spr_boxxedpepspin = spr_boxxedpep_spin
+		spr_boxxedpepflap = spr_boxxedpep_flap
 		spr_cheesepepintro = spr_cheesepep_intro
 		spr_cheesepepidle = spr_cheesepep_idle
 		spr_cheesepepwalk = spr_cheesepep_walk
@@ -315,6 +317,18 @@ function scr_characterspr() {
 		spr_trashjump2 = spr_player_trashjump2
 		spr_trashfall = spr_player_trashfall
 		spr_rampjump = spr_player_rampjump
+		spr_noisebombspinjump = spr_playerN_noisebombspinjump
+		spr_doublejump = spr_playerN_doublejump
+		spr_doublejumpfall = spr_playerN_doublejumpfall
+		spr_hookshot1 = spr_playerN_hookshot1
+		spr_hookshot2 = spr_playerN_hookshot2
+		spr_pogobouncemach = spr_playerN_pogobouncemach
+		spr_pogobounce = spr_playerN_pogobounce
+		spr_pogofall = spr_playerN_pogofall
+		spr_pogofallmach = spr_playerN_pogofallmach
+		spr_pogostart = spr_playerN_pogostart
+		spr_wallcling = spr_playerN_wallcling
+		spr_wallclingstart = spr_playerN_wallclingstart
 		_spr_tv_barrel = spr_tv_barrel
 		_spr_tv_bg = spr_tv_bg
 		_spr_tv_bombpep = spr_tv_bombpep
@@ -358,6 +372,8 @@ function scr_characterspr() {
 		fake_tv_hud_x = 845
 		fake_tv_hud_y = 80
 		paletteselect = 1
+		escapemusic = mu_pizzatime
+		lap2music = mu_chase
 	}
 	if (character == "N"
 		or(character == "P" && (!ispeppino))) {
@@ -605,6 +621,18 @@ function scr_characterspr() {
 		spr_suplexcancel = spr_playerN_suplexcancel
 		spr_mortthrow = spr_playerN_mortthrow
 		spr_palette = spr_noisepalette
+		spr_noisebombspinjump = spr_playerN_noisebombspinjump
+		spr_doublejump = spr_playerN_doublejump
+		spr_doublejumpfall = spr_playerN_doublejumpfall
+		spr_hookshot1 = spr_playerN_hookshot1
+		spr_hookshot2 = spr_playerN_hookshot2
+		spr_pogobouncemach = spr_playerN_pogobouncemach
+		spr_pogobounce = spr_playerN_pogobounce
+		spr_pogofall = spr_playerN_pogofall
+		spr_pogofallmach = spr_playerN_pogofallmach
+		spr_pogostart = spr_playerN_pogostart
+		spr_wallcling = spr_playerN_wallcling
+		spr_wallclingstart = spr_playerN_wallclingstart
 		_spr_tv_barrel = spr_tv_barrelN
 		_spr_tv_bg = spr_tv_bg
 		_spr_tv_bombpep = spr_tv_bombpepN
@@ -648,6 +676,8 @@ function scr_characterspr() {
 		fake_tv_hud_x = 845
 		fake_tv_hud_y = 80
 		paletteselect = 0
+		escapemusic = mu_noiseescape
+		lap2music = mu_chase
 	}
 	if (character == "V") {
 		spr_idle = spr_playerV_idle
@@ -875,6 +905,8 @@ function scr_characterspr() {
 		fake_tv_hud_x = 845
 		fake_tv_hud_y = 80
 		paletteselect = 0
+		escapemusic = mu_pizzatime
+		lap2music = mu_chase
 	}
 	if (character == "M") {
 		spr_idle = spr_pepperman_idle
@@ -1100,6 +1132,8 @@ function scr_characterspr() {
 		fake_tv_hud_x = 845
 		fake_tv_hud_y = 80
 		paletteselect = 1
+		escapemusic = mu_pizzatime
+		lap2music = mu_chase
 	}
 	if (character == "S") {
 		spr_idle = spr_snick_idle
@@ -1275,6 +1309,8 @@ function scr_characterspr() {
 		fake_tv_hud_yscale = 1
 		fake_tv_hud_x = 845
 		fake_tv_hud_y = 80
+		escapemusic = mu_pizzatime
+		lap2music = mu_chase
 	}
 	exit;
 }

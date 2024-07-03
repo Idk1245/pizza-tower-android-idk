@@ -3,7 +3,7 @@
   "resourceVersion": "1.0",
   "name": "mu_ufo",
   "conversionMode": 0,
-  "compression": 0,
+  "compression": 3,
   "volume": 1.0,
   "preload": true,
   "bitRate": 128,
@@ -15,7 +15,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mu_ufo",
-  "duration": 225.287,
+  "duration": 225.28726,
   "parent": {
     "name": "Music",
     "path": "folders/Sounds/Music.yy",
