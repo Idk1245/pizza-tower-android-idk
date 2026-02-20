@@ -29,25 +29,38 @@ function nsp_execute_master(argument0, argument1, argument2, argument3, argument
 
 	//*** PART 3: LOOKING FOR SPECIAL WORDS ***
 
-	if nspListStr[|list_min]="{"
-	 spec_str="{"
- 
-	 else if nspListPar[|list_min]=NSP_TYPE._specword
-	  spec_str=nspListStr[|list_min];
-  
-	  else spec_str="";
-  
+	spec_str="";
+	if(nspListPar[|list_min]=NSP_TYPE._specword || nspListStr[|list_min]="{")
+	{
+		spec_str=nspListStr[|list_min];
+	} // this on change should hopefully boost frames
 	//*** PART 4: SWITCHING WITH SPECIAL WORD ***
 
-	switch (spec_str) begin
-
+	switch (spec_str) {
 	 case "{":
 	 var pos_1;
- 
 	   pri_b=0;
 	   pos_1=-1;
+	   i=list_min+1
+	   for (i=list_min+1; i<=list_max; i+=1) {
+		    if nspListStr[|i]="{" {
+		     pri_b+=1;
+			}
+		    if nspListStr[|i]="}" {
+				if pri_b=0 {
+					pos_1=i;       
+					break;
+				}
+				else pri_b-=1;
+		    }
+		   if (i=list_max and pos_1=-1) {
+		     NSP_notify("SCRIPT: nsp_execute_master. ERROR: Syntax error, execution aborted. ",nspListStr,list_min,list_max);
+		     return undefined;
+		   }
+
+	   };
+		/*
 	   for (i=list_min+1; i<=list_max; i+=1) begin
-   
 	    if nspListStr[|i]="{"
 	     pri_b+=1;
 	     else if nspListStr[|i]="}" {
@@ -62,8 +75,7 @@ function nsp_execute_master(argument0, argument1, argument2, argument3, argument
 	     return undefined;
 	     }
 
-	   end;
-
+	   end; */
 	   rv=nsp_execute_block(list_min+1, pos_1-1, nspListStr, nspListPar);
 	   if !is_undefined(rv) return rv;
     
@@ -216,16 +228,21 @@ function nsp_execute_master(argument0, argument1, argument2, argument3, argument
 	    if (nspListStr[|pos_3+1]="else") {
 	     pri_b=0;
 	     pos_4=-1;
-	     for (i=pos_3+1; i<=list_max; i+=1) begin
-	      if (nspListStr[|i]="{")
+	     for (i=pos_3+1; i<=list_max; i+=1) {
+	      if (nspListStr[|i]="{") {
 	       pri_b+=1;
-	       else if (nspListStr[|i]="}")
+		   //trace("found { at:" + string(i))
+		  }
+	      if (nspListStr[|i]="}") {
 	        pri_b-=1;
-	        else if ((nspListStr[|i]=";" or i=list_max) and pri_b=0) {
-	         pos_4=i;
-	         break;
-	         }     
-	      end;  
+		   //trace("found } at:" + string(i))
+		  }
+	      if ((nspListStr[|i]=";" or i=list_max) and pri_b=0) {
+	        pos_4=i;
+		    //trace("found end at:" + string(i))
+	        break;
+		  }     
+		 };  
 	     if (pos_4=-1) {
 	      NSP_notify("SCRIPT: nsp_execute_master. ERROR: Cannot find body of else statement, execution aborted.",nspListStr,list_min,list_max);
 	      return undefined;
@@ -251,8 +268,7 @@ function nsp_execute_master(argument0, argument1, argument2, argument3, argument
 	   var pos_1; 
    
 	   pos_1=-1;
-	   for (i=list_min+1; i<=list_max; i+=1) begin
-   
+	   for (i=list_min+1; i<=list_max; i+=1) {
 	    if nspListStr[|i]=";" {
 	     pos_1=i;       
 	     break;
@@ -263,7 +279,7 @@ function nsp_execute_master(argument0, argument1, argument2, argument3, argument
 	     return undefined;
 	     }
 
-	   end;
+	   };
    
 	   rv=nsp_evaluate_list(list_min+1, pos_1-1, nspListStr, nspListPar);
 	   if nsp_is_equal(rv,nspToken[NSP_TOK.abort]) {
@@ -280,15 +296,15 @@ function nsp_execute_master(argument0, argument1, argument2, argument3, argument
 	   if !is_undefined(rv) return rv;
    
 	   //Remove executed part:
-	   if argument2=false {
-	    nsp_list_remove(list_min, list_max, nspListStr, nspListPar);
-	    list_max-=(list_max-list_min+1);
+		if argument2=false {
+			nsp_list_remove(list_min, list_max, nspListStr, nspListPar);
+			list_max-=(list_max-list_min+1);
 	    }
 	    else list_min=list_max+1
    
 	  break;
   
-	end;
+	};
 
 	//*** PART 5: EXECUTE REMAINING CODE ***
 

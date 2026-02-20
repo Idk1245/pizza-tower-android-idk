@@ -141,7 +141,7 @@ if (fadealpha > 1)
 			    }
             }
             with (obj_player)
-            {
+            {	
 				switch(other.object){
 					case obj_door_editor:
 						x = (other.xx + 50)
@@ -158,19 +158,19 @@ if (fadealpha > 1)
 					case obj_hallway_editor:
 						x = (other.xx + other.xscale)
 						y = (other.yy)
+						movespeed = tauntstoredmovespeed
+						vsp = tauntstoredvsp
+						sprite_index = tauntstoredsprite
+						state = tauntstoredstate
 					break
 					case obj_lapportal_editor:
 						x = (other.xx)
 						y = (other.yy)
 					break
 				}
+				roomstartx = x
+				roomstarty = y
             }
-			with(obj_fakeeditor_trigger_base){
-				event_perform(ev_other,ev_room_start)
-			}
-			with(obj_fakeeditor_trigger_door_base){
-				event_perform(ev_other,ev_room_start)
-			}
 		}
 	}
 }
@@ -228,4 +228,16 @@ if instance_exists(obj_player)
 	}
 }
 if (fadein == 1 && fadealpha < 0)
+{
+	if(custom_level)
+	{
+		with(all)
+		{
+			if(object_index != obj_fakeeditor || object_index != obj_virtual_controller)
+			{
+				event_perform(ev_other,ev_room_start)
+			}
+		}
+	}
 	instance_destroy()
+}

@@ -44,7 +44,7 @@ function scr_player_knightpep()
 	}
 	if (sprite_index == spr_knightpepdowntrust && vsp >= 0)
 		vsp += 0.5
-	if key_jump
+	if key_jump && !finalmoveset
 		input_buffer_jump = 0
 	if (grounded && vsp > 0)
 		jumpstop = 0
@@ -64,22 +64,39 @@ function scr_player_knightpep()
 	}
 	if (grounded && vsp > 0)
 		jumpstop = 0
-	if (input_buffer_jump < 8 && vsp > 0 && grounded && (sprite_index == spr_knightpepidle or sprite_index == spr_knightpepdowntrust or sprite_index == spr_knightpepland or sprite_index == spr_knightpepwalk))
+	if(!finalmoveset)
 	{
-		image_index = 0
-		sprite_index = spr_knightpepjumpstart
-		scr_soundeffect(sfx_jump)
-		vsp = -11
-		if (move == 0)
-			movespeed = 0
-		if (move != 0)
-			movespeed = 6
+		if (input_buffer_jump < 8 && vsp > 0 && grounded && (sprite_index == spr_knightpepidle or sprite_index == spr_knightpepdowntrust or sprite_index == spr_knightpepland or sprite_index == spr_knightpepwalk))
+		{
+			image_index = 0
+			sprite_index = spr_knightpepjumpstart
+			scr_soundeffect(sfx_jump)
+			vsp = -11
+			if (move == 0)
+				movespeed = 0
+			if (move != 0)
+				movespeed = 6
+		}
+	} else {
+	    if (input_buffer_jump > 0 && vsp > 0 && can_jump && ((sprite_index == spr_knightpepidle) || (sprite_index == spr_knightpepdowntrust) || (sprite_index == spr_knightpepland) || (sprite_index == spr_knightpepwalk) || (sprite_index == spr_knightpepfall)))
+	    {
+	        create_particle(x, y, (3 << 0))
+	        input_buffer_jump = 0
+	        image_index = 0
+	        sprite_index = spr_knightpepjumpstart
+			scr_soundeffect(sfx_jump)
+	        vsp = -11
+	        if ((move == 0))
+	            movespeed = 0
+	        if ((move != 0))
+	            movespeed = 6
+	    }
 	}
 	if (floor(image_index) == (image_number - 1) && sprite_index == spr_knightpepjumpstart)
 		sprite_index = spr_knightpepjump
 	if ((floor(image_index) == (image_number - 1) && sprite_index == spr_knightpepjump) or ((!grounded) && sprite_index != spr_knightpepjumpstart && sprite_index != spr_knightpepjump && sprite_index != spr_knightpepthunder && sprite_index != spr_knightpepdowntrust && sprite_index != spr_knightpepdoublejump))
 		sprite_index = spr_knightpepfall
-	if ((sprite_index == spr_knightpepdowntrust or sprite_index == spr_knightpepfall or sprite_index == spr_knightpep_doublejump) && grounded && vsp > 0 && (!scr_slope()))
+	if ((sprite_index == spr_knightpepdowntrust or sprite_index == spr_knightpepfall or sprite_index == spr_knightpepdoublejump) && grounded && vsp > 0 && (!scr_slope()))
 	{
 		with (obj_baddie)
 		{
@@ -127,20 +144,48 @@ function scr_player_knightpep()
 	else if (knightmiddairstop == 0)
 	{
 		hsp = (xscale * movespeed)
-		if ((!doublejump) && key_jump)
+		if(!finalmoveset)
 		{
-			doublejump = 1
-			input_buffer_jump = 0
-			vsp = -11
-			sprite_index = spr_knightpepdoublejump
-			image_index = 0
-			move = (key_left + key_right)
-			if (move != 0)
-				xscale = move
-			if (move != 0)
-				movespeed = 6
-			if (move == 0)
-				movespeed = 0
+			if ((!doublejump) && key_jump)
+			{
+				doublejump = 1
+				input_buffer_jump = 0
+				vsp = -11
+				sprite_index = spr_knightpepdoublejump
+				image_index = 0
+				move = (key_left + key_right)
+				if (move != 0)
+					xscale = move
+				if (move != 0)
+					movespeed = 6
+				if (move == 0)
+					movespeed = 0
+			}
+		} else {
+			if ((!doublejump) && (input_buffer_jump > 0) && (!can_jump) && (sprite_index != spr_knightpepdowntrust))
+	        {
+	            scr_soundeffect(sfx_jump)
+	            doublejump = 1
+	            input_buffer_jump = 0
+	            vsp = -11
+	            repeat (4)
+	            {
+	                with (instance_create((x + random_range(-50, 50)), (y + random_range(0, 50)), obj_highjumpcloud2))
+	                {
+	                    vspeed = 2
+	                    sprite_index = spr_cloudeffect
+	                }
+	            }
+	            sprite_index = spr_knightpepdoublejump
+	            image_index = 0
+	            move = (key_left + key_right)
+	            if ((move != 0))
+	                xscale = move
+	            if ((move != 0))
+	                movespeed = 6
+	            if ((move == 0))
+	                movespeed = 0
+	        }
 		}
 	}
 	if ((!grounded) && place_meeting((x + sign(hsp)), y, obj_solid) && (!scr_slope()))

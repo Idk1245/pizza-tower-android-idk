@@ -2,9 +2,9 @@ if (room == hub_loadingscreen && state != 2 && (!instance_exists(obj_fadeout)))
 {
 	with (obj_player)
 	{
-		targetRoom = hub_reception
-		targetDoor = "D"
-		targetRoom = rm_eggplantdisclaimer
+		//targetRoom = hub_reception
+		//targetDoor = "D"
+		targetRoom = global.hubroom
 		targetDoor = "A"
 	}
 	instance_create(x, y, obj_fadeout)

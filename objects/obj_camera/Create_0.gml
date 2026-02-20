@@ -62,3 +62,17 @@ fakex = 0
 fakey = 0
 fakewidth = room_width
 fakeheight = room_height
+key_inv_x = 50
+key_inv_y = 30
+hud_x = 121
+hud_y = 70
+hp_hud_x = 190
+hp_hud_y = 70
+rank_xoffset = 142
+rank_yoffset = -22
+menacing_combo_count = 3
+
+function draw_head_sprite(spr)
+{
+	draw_sprite_ext(spr, -1, obj_player1.hud_head_x, obj_player1.hud_head_y, 1, 1, 1, c_white, alpha)
+}
